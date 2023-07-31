@@ -3,12 +3,12 @@ import Link from 'next/link';
 
 function Form({ type, submitting, post, setPost, handleSubmit }) {
 	return (
-		<section className='w-full max-w-full flex-center flex-col mb-10'>
+		<section className='w-full max-w-full lg:flex-center flex-col mb-10'>
 			<h1 className='head_text capitalize'>
 				<span className='orange_gradient'>{type} Prompt</span>
 			</h1>
 
-			<p className='desc max-w-sm text-center'>
+			<p className='desc max-w-sm lg:text-center'>
 				<span className='capitalize'>{type}</span> and shear amazing prompt with world, to
 				run wild with any AI-powered tool
 			</p>
@@ -18,7 +18,7 @@ function Form({ type, submitting, post, setPost, handleSubmit }) {
 				className='w-full mt-10 gap-7 max-w-2xl flex flex-col glassmorphism'
 			>
 				<label>
-					<span className='font-satoshi font-semibold text-base text-gray-700'>
+					<span className='font-satoshi font-semibold text-base text-gray-700 dark:text-gray-200'>
 						Your IA prompt
 					</span>
 
@@ -37,7 +37,7 @@ function Form({ type, submitting, post, setPost, handleSubmit }) {
 				</label>
 
 				<label>
-					<span className='font-satoshi font-semibold text-base text-gray-700'>
+					<span className='font-satoshi font-semibold text-base text-gray-700 dark:text-gray-200'>
 						Tag (products, development, education)
 					</span>
 
@@ -56,7 +56,7 @@ function Form({ type, submitting, post, setPost, handleSubmit }) {
 				</label>
 
 				<div className='flex-end mx-3 mb-5 gap-5'>
-					<Link href='/' className='text-gray-500 text-sm'>
+					<Link href='/' className='text-gray-500 dark:text-gray-200 text-sm'>
 						Cancel
 					</Link>
 
