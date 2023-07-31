@@ -78,7 +78,7 @@ function Feed() {
 					placeholder='Search for a tag or a username'
 					onChange={handleSearchChange}
 					value={searchText}
-					className='search_input peer'
+					className='search_input'
 				/>
 			</form>
 
