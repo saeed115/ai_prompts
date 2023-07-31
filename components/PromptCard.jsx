@@ -19,13 +19,17 @@ function PromptCard({ prompt, handelTagClick, handelEdit, handelDelete }) {
 		setTimeout(() => setCopied(''), 3000);
 	};
 
+	const handleProfileClick = () => {
+		if (prompt.creator._id === session?.user.id) return router.push('/profile');
+
+		router.push(`/profile/${prompt.creator._id}?name=${prompt.creator.username}`);
+	};
+
 	return (
 		<div className='prompt_card'>
 			<div className='flex justify-between gap-5'>
 				<div
-					onClick={() =>
-						router.push(`/profile/${prompt.creator._id}/${prompt.creator.username}`)
-					}
+					onClick={handleProfileClick}
 					className='flex flex-1 justify-start items-center cursor-pointer gap-3'
 				>
 					<Image
@@ -36,15 +40,14 @@ function PromptCard({ prompt, handelTagClick, handelEdit, handelDelete }) {
 						alt='user_mage'
 					/>
 					<div className='flex flex-col'>
-						<h3 className='font-satoshi font-semibold text-gray-900'>
-							{prompt.creator.username}
-						</h3>
-						<p className='font-inter text-sm text-gray-500'>{prompt.creator.email}</p>
+						<h3 className='font-satoshi font-semibold'>{prompt.creator.username}</h3>
+						<p className='font-inter text-sm text-gray-500 dark:text-gray-100'>
+							{prompt.creator.email}
+						</p>
 					</div>
 				</div>
 
 				<div className='copy_btn relative' onClick={handelCopy}>
-					{copied && <p className='absolute -top-5 px-4'>copied</p>}
 					<Image
 						src={
 							copied === prompt.prompt
@@ -57,7 +60,9 @@ function PromptCard({ prompt, handelTagClick, handelEdit, handelDelete }) {
 				</div>
 			</div>
 
-			<p className='font-satoshi text-sm my-4 text-gray-700'>{prompt.prompt}</p>
+			<p className='font-satoshi text-sm my-4 text-gray-700 dark:text-gray-200'>
+				{prompt.prompt}
+			</p>
 			<p
 				onClick={() => handelTagClick && handelTagClick(prompt.tag)}
 				className='font-inter cursor-pointer text-sm orange_gradient'
@@ -68,7 +73,7 @@ function PromptCard({ prompt, handelTagClick, handelEdit, handelDelete }) {
 				<div className='flex justify-end border-t border-t-gray-200 pt-4 mt-4 gap-4'>
 					<p
 						onClick={handelEdit}
-						className='text-sm font-inter cursor-pointer green_gradient'
+						className='text-sm font-inter cursor-pointer blue_gradient'
 					>
 						Edit
 					</p>
