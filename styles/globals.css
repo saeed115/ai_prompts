@@ -111,17 +111,17 @@
 }
 
 .glassmorphism {
-	@apply rounded-xl border border-gray-200 bg-white/20 dark:bg-black backdrop-blur p-5;
+	@apply rounded-xl border border-gray-200 dark:border-black bg-white/20 dark:bg-black/30 backdrop-blur p-5;
 	/* shadow-[inset_10px_-50px_94px_0_rgb(199, 199, 199, 0.2)] */
 }
 
 .prompt_layout {
-	@apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
+	@apply space-y-4 py-14 sm:columns-2 sm:gap-6 xl:columns-3;
 }
 
 /* Feed Component */
 .feed {
-	@apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
+	@apply mt-16 mx-auto w-full flex justify-center items-center flex-col gap-2;
 }
 
 /* Form Component */
