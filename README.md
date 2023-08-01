@@ -1,10 +1,4 @@
-
-
-
-<div style="display: flex;">
-  <img width="50%"  src="https://github.com/saeed115/ai_prompts/assets/18006541/b24bea5f-480c-4429-b309-d0b3748d10fb" alt=""/>
-  <img width="50%" src="https://github.com/saeed115/ai_prompts/assets/18006541/ff3efa53-273c-4641-acf2-c959db940df5" alt=""/>
-</div>
+![image](https://github.com/saeed115/ai_prompts/assets/18006541/ad86805f-8170-4b9e-a60d-e3f10a9c8aa7)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
