@@ -7,6 +7,7 @@ import { useSearchParams } from 'next/navigation';
 
 function OtherProfile({ params }) {
 	const [prompts, setPrompts] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 	const searchParams = useSearchParams();
 	const userName = searchParams.get('name');
@@ -15,6 +16,8 @@ function OtherProfile({ params }) {
 
 	useEffect(() => {
 		const getPrompts = async () => {
+			setLoading(true);
+
 			try {
 				const response = await fetch(`/api/users/${id}/prompts`);
 				const data = await response.json();
@@ -24,13 +27,22 @@ function OtherProfile({ params }) {
 				}
 			} catch (error) {
 				console.log(error);
+			} finally {
+				setLoading(false);
 			}
 		};
 
 		if (id) getPrompts();
 	}, []);
 
-	return <Profile name={userName} desc={`Welcome to ${userName} profile`} data={prompts} />;
+	return (
+		<Profile
+			name={userName}
+			desc={`Welcome to ${userName} profile`}
+			data={prompts}
+			loading={loading}
+		/>
+	);
 }
 
 export default OtherProfile;

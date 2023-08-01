@@ -3,10 +3,11 @@
 import { useState, useEffect } from 'react';
 
 import PromptCard from './PromptCard';
+import Loading from './Loading';
 
 const PromptCardList = ({ data, handelTagClick }) => {
 	return (
-		<div className='mt-16 prompt_layout'>
+		<div className='prompt_layout'>
 			{data.map((prompt) => (
 				<PromptCard
 					prompt={prompt}
@@ -20,6 +21,7 @@ const PromptCardList = ({ data, handelTagClick }) => {
 
 function Feed() {
 	const [prompts, setPrompts] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 	const [searchText, setSearchText] = useState('');
 	const [searchResult, setSearchResult] = useState([]);
@@ -55,6 +57,8 @@ function Feed() {
 
 	useEffect(() => {
 		const getPrompts = async () => {
+			setLoading(true);
+
 			try {
 				const response = await fetch('/api/prompt');
 				const data = await response.json();
@@ -64,6 +68,8 @@ function Feed() {
 				}
 			} catch (error) {
 				console.log(error);
+			} finally {
+				setLoading(false);
 			}
 		};
 
@@ -72,7 +78,7 @@ function Feed() {
 
 	return (
 		<section className='feed'>
-			<form className='w-full flex-center relative'>
+			<form className='w-full max-w-xl flex-center relative'>
 				<input
 					type='text'
 					placeholder='Search for a tag or a username'
@@ -82,10 +88,14 @@ function Feed() {
 				/>
 			</form>
 
-			<PromptCardList
-				data={searchText ? searchResult : prompts}
-				handelTagClick={handelTagClick}
-			/>
+			{loading ? (
+				<Loading />
+			) : (
+				<PromptCardList
+					data={searchText ? searchResult : prompts}
+					handelTagClick={handelTagClick}
+				/>
+			)}
 		</section>
 	);
 }

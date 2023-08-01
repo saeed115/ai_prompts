@@ -8,11 +8,14 @@ import Profile from '@components/Profile';
 
 function MyProfile() {
 	const [prompts, setPrompts] = useState([]);
+	const [loading, setLoading] = useState(false);
 	const { data: session } = useSession();
 	const router = useRouter();
 
 	useEffect(() => {
 		const getPrompts = async () => {
+			setLoading(true);
+
 			try {
 				const response = await fetch(`/api/users/${session?.user.id}/prompts`);
 				const data = await response.json();
@@ -22,6 +25,8 @@ function MyProfile() {
 				}
 			} catch (error) {
 				console.log(error);
+			} finally {
+				setLoading(false);
 			}
 		};
 
@@ -55,6 +60,7 @@ function MyProfile() {
 			data={prompts}
 			handelEdit={handelEdit}
 			handelDelete={handelDelete}
+			loading={loading}
 		/>
 	);
 }
