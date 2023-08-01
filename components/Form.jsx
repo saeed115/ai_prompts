@@ -8,7 +8,7 @@ function Form({ type, submitting, post, setPost, handleSubmit }) {
 				<span className='orange_gradient'>{type} Prompt</span>
 			</h1>
 
-			<p className='desc max-w-sm lg:text-center'>
+			<p className='desc max-w-sm lg:text-left text-center'>
 				<span className='capitalize'>{type}</span> and shear amazing prompt with world, to
 				run wild with any AI-powered tool
 			</p>
